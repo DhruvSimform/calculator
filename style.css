@@ -1,0 +1,96 @@
+.calculator{
+    height: 100vh;
+    background-color: #f2f3f5;
+    width: 50vw;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+@media only screen and (max-width: 1000px) {
+    .calculator{
+
+        width: 100vw;
+    }
+}
+
+.calculator .display{
+    height: 15vh;
+    font-size: 5.5rem;
+    /* background-color: black;
+    color: white; */
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    font-weight: bold;
+}
+
+.calculator .display p{
+    text-align: right;
+    /* overflow-x: auto; */
+}
+
+.calculator{
+    box-sizing: border-box;
+    padding: 5px;
+    padding-left: 5px !important;
+}
+
+
+.keys-area{
+    box-sizing: border-box;
+    height: 75vh;
+}
+
+.row{
+    margin: 5px 0px;
+    column-gap: 5px;;
+    height: 7.9vh;
+    font-size: 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    
+    
+    /* justify-items: center; */
+
+}
+
+button{
+    border: none;
+    border-radius: 2px;
+    /* margin: 3px; */
+}
+
+.mainkey{
+    font-size: 2rem;
+    /* display: flex; */
+    background-color: #fcfcfc;
+    /* font-weight: 600; */
+    /* margin: 5px; */
+    font-weight: bold;
+    
+
+}
+
+.secondrykey{
+    background-color: #f5f6f6;
+ 
+}
+
+.upperkey{
+    background-color: transparent;
+    /* font-size: 1.5rem; */
+    /* font-weight: lighter; */
+
+}
+
+.equalkey{
+    background-color: #92c2e8;
+}
+
+
+
+
