@@ -1,7 +1,8 @@
 .calculator{
     height: 100vh;
-    background-color: aquamarine;
+    background-color: #f2f3f5;
     width: 50vw;
+    box-sizing: border-box;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -9,4 +10,19 @@
 
         width: 100vw;
     }
+}
+
+.calculator .display{
+    height: 8vh;
+    font-size: 2.5rem;
+    /* background-color: black;
+    color: white; */
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.calculator .display p{
+    text-align: right;
+    /* overflow-x: auto; */
 }
