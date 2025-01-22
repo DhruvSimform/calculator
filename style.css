@@ -1,0 +1,12 @@
+.calculator{
+    height: 100vh;
+    background-color: aquamarine;
+    width: 50vw;
+}
+
+@media only screen and (max-width: 1000px) {
+    .calculator{
+
+        width: 100vw;
+    }
+}
