@@ -11,11 +11,6 @@ const mr_ref = document.querySelector(".mr")
 
 // console.log(result)
 
-
-let allowedToUseDot=true;
-const operators = ['+', '-', '*', '/', '%'];
-
-
 const onClickZero = (e) => {
     result_ref.textContent = result_ref.textContent + '0'
 }
@@ -74,12 +69,7 @@ const onClickCloseBracket = (e) => {
 }
 
 const onClickDot = (e) => {
-    if(allowedToUseDot){
-
-        result_ref.textContent = result_ref.textContent + '.';
-        allowedToUseDot=false;
-    }
-
+    result_ref.textContent = result_ref.textContent + '.'
 }
 
 
@@ -93,7 +83,6 @@ const onClickEqual = (e) => {
     try {
         let s = result.replaceAll("^", "**")
         result_ref.textContent = `${eval(s)}`;
-        allowedToUseDot=true;
     } catch {
         result_ref.textContent = "Error";
     }
@@ -106,35 +95,29 @@ const onclickEraseOne = (e) => {
 
 const onClickEraseAll = (e) => {
     result_ref.textContent = ""
-    allowedToUseDot=true;
 }
 
 
 const onClickPlus = (e) => {
-    result_ref.textContent = result_ref.textContent + '+';
-    allowedToUseDot=true;
+    result_ref.textContent = result_ref.textContent + '+'
 }
 
 const onCickMinus = (e) => {
-    result_ref.textContent = result_ref.textContent + '-';
-    allowedToUseDot=true;
+    result_ref.textContent = result_ref.textContent + '-'
 }
 
 const onCickDivide = (e) => {
     // preventDefault();
-    result_ref.textContent = result_ref.textContent + '/';
-    allowedToUseDot=true;
+    result_ref.textContent = result_ref.textContent + '/'
 }
 
 
 const onCickMod = (e) => {
-    result_ref.textContent = result_ref.textContent + '%';
-    allowedToUseDot=true;
+    result_ref.textContent = result_ref.textContent + '%'
 }
 
 const onCickMul = (e) => {
-    result_ref.textContent = result_ref.textContent + '*';
-    allowedToUseDot=true;
+    result_ref.textContent = result_ref.textContent + '*'
 }
 
 const calculateSquare = () => {
@@ -203,12 +186,7 @@ const deleteCurrentCharacter = () => {
     result_ref.textContent = result_ref.textContent.slice(1);
 };
 
-
-
-operators.includes(current.length - 1)
 const keyActions = {
-
-    
     '0': () => appendToResult('0'),
     '1': () => appendToResult('1'),
     '2': () => appendToResult('2'),
@@ -219,19 +197,7 @@ const keyActions = {
     '7': () => appendToResult('7'),
     '8': () => appendToResult('8'),
     '9': () => appendToResult('9'),
-    '+': () => {
-        let text = result_ref.textContent;
-
-        if(operators.includes(text[text.length - 1]))
-        {
-            result_ref.textContent=text.slice(0,text.length-2)+'+';
-            console.log(ext.slice(0,text.length-2));
-            
-        }
-        else{
-            appendToResult('+');
-        }
-    },
+    '+': () => appendToResult('+'),
     '-': () => appendToResult('-'),
     '*': () => appendToResult('*'),
     '/': (e) => {
