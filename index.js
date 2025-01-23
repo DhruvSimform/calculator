@@ -8,6 +8,8 @@ let memory = 0; // Memory storage for M+, M-, MS
 const mc_ref = document.querySelector(".mc")
 const mr_ref = document.querySelector(".mr")
 
+let isDotAllowed = true;
+
 
 // console.log(result)
 
@@ -69,7 +71,11 @@ const onClickCloseBracket = (e) => {
 }
 
 const onClickDot = (e) => {
-    result_ref.textContent = result_ref.textContent + '.'
+    
+    if(isDotAllowed){
+        result_ref.textContent = result_ref.textContent + '.';
+        isDotAllowed=false;
+    }
 }
 
 
@@ -84,7 +90,7 @@ const onClickEqual = (e) => {
         let s = result.replaceAll("^", "**")
         result_ref.textContent = `${eval(s)}`;
     } catch {
-        result_ref.textContent = "Error";
+        result_ref.textContent = "Invalid expression";
     }
 }
 
@@ -99,25 +105,30 @@ const onClickEraseAll = (e) => {
 
 
 const onClickPlus = (e) => {
-    result_ref.textContent = result_ref.textContent + '+'
+    result_ref.textContent = result_ref.textContent + '+';
+    isDotAllowed=true;
 }
 
 const onCickMinus = (e) => {
-    result_ref.textContent = result_ref.textContent + '-'
+    result_ref.textContent = result_ref.textContent + '-';
+    isDotAllowed=true;
 }
 
 const onCickDivide = (e) => {
     // preventDefault();
-    result_ref.textContent = result_ref.textContent + '/'
+    result_ref.textContent = result_ref.textContent + '/';
+    isDotAllowed=true;
 }
 
 
 const onCickMod = (e) => {
-    result_ref.textContent = result_ref.textContent + '%'
+    result_ref.textContent = result_ref.textContent + '%';
+    isDotAllowed=true;;
 }
 
 const onCickMul = (e) => {
-    result_ref.textContent = result_ref.textContent + '*'
+    result_ref.textContent = result_ref.textContent + '*';
+    isDotAllowed=true;;
 }
 
 const calculateSquare = () => {
@@ -197,17 +208,26 @@ const keyActions = {
     '7': () => appendToResult('7'),
     '8': () => appendToResult('8'),
     '9': () => appendToResult('9'),
-    '+': () => appendToResult('+'),
-    '-': () => appendToResult('-'),
-    '*': () => appendToResult('*'),
+    '+': () => {appendToResult('+');
+        isDotAllowed=true;
+    },
+    '-': () => {appendToResult('-');
+        isDotAllowed=true;
+    },
+    '*': () => {appendToResult('*');
+        isDotAllowed=true;
+    },
     '/': (e) => {
         e.preventDefault();
-        appendToResult('/')
+        appendToResult('/');
+        isDotAllowed=true;
     },
     '(': () => appendToResult('('),
     ')': () => appendToResult(')'),
     '!': () => appendToResult('!'),
-    '%': () => appendToResult('%'),
+    '%': () => {appendToResult('%');
+        isDotAllowed=true;
+    },
     'Backspace': () => deleteLastCharacter(),
     'Delete': () => deleteNextCharacter(),
     'Enter': () => {
@@ -216,7 +236,7 @@ const keyActions = {
             let s = result.replaceAll("^", "**")
             result_ref.textContent = `${eval(s)}`;
         } catch {
-            result_ref.textContent = "Error";
+            result_ref.textContent = "Invalid expression";
         }
     },
 };
