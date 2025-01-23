@@ -11,6 +11,7 @@ const mr_ref = document.querySelector(".mr")
 let isDotAllowed = true;
 
 
+
 // console.log(result)
 
 const onClickZero = (e) => {
@@ -90,7 +91,7 @@ const onClickEqual = (e) => {
         let s = result.replaceAll("^", "**")
         result_ref.textContent = `${eval(s)}`;
     } catch {
-        result_ref.textContent = "Invalid expression";
+        result_ref.textContent = "Error";
     }
 }
 
@@ -105,30 +106,101 @@ const onClickEraseAll = (e) => {
 
 
 const onClickPlus = (e) => {
-    result_ref.textContent = result_ref.textContent + '+';
-    isDotAllowed=true;
+
+
+
+    // const result_ref = document.querySelector(".result")
+    result=result_ref.textContent
+    if(result=="" &&result[result.length-1]=="."){
+
+    }
+
+    else{
+        if(!isNaN(result[result.length-1])){
+            result_ref.textContent = result_ref.textContent + '+';
+            isDotAllowed=true;
+        }
+        else{
+            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '+';
+            isDotAllowed=true;
+        }
+    }
+
+
 }
 
 const onCickMinus = (e) => {
-    result_ref.textContent = result_ref.textContent + '-';
-    isDotAllowed=true;
+    result=result_ref.textContent
+    if(result==""){
+
+    }
+
+    else{
+        if(!isNaN(result[result.length-1])){
+            result_ref.textContent = result_ref.textContent + '-';
+            isDotAllowed=true;
+        }
+        else{
+            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '-';
+            isDotAllowed=true;
+        }
+    }
 }
 
 const onCickDivide = (e) => {
     // preventDefault();
-    result_ref.textContent = result_ref.textContent + '/';
-    isDotAllowed=true;
+    result=result_ref.textContent
+    if(result==""){
+
+    }
+
+    else{
+        if(!isNaN(result[result.length-1])){
+            result_ref.textContent = result_ref.textContent + '/';
+            isDotAllowed=true;
+        }
+        else{
+            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '/';
+            isDotAllowed=true;
+        }
+    }
 }
 
 
 const onCickMod = (e) => {
-    result_ref.textContent = result_ref.textContent + '%';
-    isDotAllowed=true;;
+    result=result_ref.textContent
+    if(result==""){
+
+    }
+
+    else{
+        if(!isNaN(result[result.length-1])){
+            result_ref.textContent = result_ref.textContent + '%';
+            isDotAllowed=true;
+        }
+        else{
+            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '%';
+            isDotAllowed=true;
+        }
+    }
 }
 
 const onCickMul = (e) => {
-    result_ref.textContent = result_ref.textContent + '*';
-    isDotAllowed=true;;
+    result=result_ref.textContent
+    if(result==""){
+
+    }
+
+    else{
+        if(!isNaN(result[result.length-1])){
+            result_ref.textContent = result_ref.textContent + '*';
+            isDotAllowed=true;
+        }
+        else{
+            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '*';
+            isDotAllowed=true;
+        }
+    }
 }
 
 const calculateSquare = () => {
@@ -198,36 +270,27 @@ const deleteCurrentCharacter = () => {
 };
 
 const keyActions = {
-    '0': () => appendToResult('0'),
-    '1': () => appendToResult('1'),
-    '2': () => appendToResult('2'),
-    '3': () => appendToResult('3'),
-    '4': () => appendToResult('4'),
-    '5': () => appendToResult('5'),
-    '6': () => appendToResult('6'),
-    '7': () => appendToResult('7'),
-    '8': () => appendToResult('8'),
-    '9': () => appendToResult('9'),
-    '+': () => {appendToResult('+');
-        isDotAllowed=true;
-    },
-    '-': () => {appendToResult('-');
-        isDotAllowed=true;
-    },
-    '*': () => {appendToResult('*');
-        isDotAllowed=true;
-    },
+    '0': () => onClickZero(),
+    '1': () => onClickOne(),
+    '2': () => onClickTwo(),
+    '3': () => onClickThree(),
+    '4': () => onClickFour(),
+    '5': () =>  onClickFive(),
+    '6': () =>  onClickSix(),
+    '7': () =>  onClickSeven(),
+    '8': () =>  onClickEight(),
+    '9': () =>  onClickNine(),
+    '+': () => onClickPlus(),
+    '-': () => onCickMinus(),
+    '*': () => onCickMul(),
     '/': (e) => {
         e.preventDefault();
-        appendToResult('/');
-        isDotAllowed=true;
+        onClckDivide();
     },
     '(': () => appendToResult('('),
     ')': () => appendToResult(')'),
     '!': () => appendToResult('!'),
-    '%': () => {appendToResult('%');
-        isDotAllowed=true;
-    },
+    '%': () => onCickMod(),
     'Backspace': () => deleteLastCharacter(),
     'Delete': () => deleteNextCharacter(),
     'Enter': () => {
@@ -236,7 +299,7 @@ const keyActions = {
             let s = result.replaceAll("^", "**")
             result_ref.textContent = `${eval(s)}`;
         } catch {
-            result_ref.textContent = "Invalid expression";
+            result_ref.textContent = "Error";
         }
     },
 };
