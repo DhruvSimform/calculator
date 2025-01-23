@@ -111,11 +111,20 @@ const onClickEqual = (e) => {
 
 
 const onclickEraseOne = (e) => {
+
+    if(result[result.length-1]=="("){
+        noOfBracket=noOfBracket-1
+    }
+    if(result[result.length-1]==")"){
+        noOfBracket=noOfBracket+1
+    }
     result_ref.textContent = result_ref.textContent.slice(0, -1)
+
 }
 
 const onClickEraseAll = (e) => {
-    result_ref.textContent = ""
+    result_ref.textContent = "";
+    noOfBracket=0
 }
 
 
