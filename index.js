@@ -10,6 +10,10 @@ const mr_ref = document.querySelector(".mr")
 
 let isDotAllowed = true;
 
+let noOfBracket=0
+
+const operation = ['+', '-', '*', '/', '%','(']
+
 
 
 // console.log(result)
@@ -64,11 +68,16 @@ const onClickNine = (e) => {
 }
 
 const onClickOpenBracket = (e) => {
-    result_ref.textContent = result_ref.textContent + '('
+    result_ref.textContent = result_ref.textContent + '(';
+    noOfBracket=noOfBracket+1
 }
 
 const onClickCloseBracket = (e) => {
-    result_ref.textContent = result_ref.textContent + ')'
+    if(noOfBracket){
+        result_ref.textContent = result_ref.textContent + ')';
+        noOfBracket=noOfBracket-1
+
+    }
 }
 
 const onClickDot = (e) => {
@@ -111,18 +120,29 @@ const onClickPlus = (e) => {
 
     // const result_ref = document.querySelector(".result")
     result=result_ref.textContent
-    if(result=="" &&result[result.length-1]=="."){
+    // console.log(result[result.length-1]);
+    
+    if(result=="" || result[result.length-1]=="."){
 
     }
 
+
     else{
-        if(!isNaN(result[result.length-1])){
+        if(!operation.includes(result[result.length-1])){
             result_ref.textContent = result_ref.textContent + '+';
             isDotAllowed=true;
         }
         else{
+            if('('==result[result.length-1]){
+                noOfBracket=noOfBracket-1
+            }
+            if(')'==result[result.length-1]){
+                noOfBracket=noOfBracket+1
+            }
             result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '+';
             isDotAllowed=true;
+
+           
         }
     }
 
@@ -131,16 +151,22 @@ const onClickPlus = (e) => {
 
 const onCickMinus = (e) => {
     result=result_ref.textContent
-    if(result==""){
+    if(result==""  || result[result.length-1]=="."){
 
     }
 
     else{
-        if(!isNaN(result[result.length-1])){
+        if(!operation.includes(result[result.length-1])){
             result_ref.textContent = result_ref.textContent + '-';
             isDotAllowed=true;
         }
         else{
+            if('('==result[result.length-1]){
+                noOfBracket=noOfBracket-1
+            }
+            if(')'==result[result.length-1]){
+                noOfBracket=noOfBracket+1
+            }
             result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '-';
             isDotAllowed=true;
         }
@@ -150,16 +176,23 @@ const onCickMinus = (e) => {
 const onCickDivide = (e) => {
     // preventDefault();
     result=result_ref.textContent
-    if(result==""){
+    if(result==""  || result[result.length-1]=="."){
 
     }
 
     else{
-        if(!isNaN(result[result.length-1])){
+        if(!operation.includes(result[result.length-1])){
             result_ref.textContent = result_ref.textContent + '/';
             isDotAllowed=true;
         }
+
         else{
+            if('('==result[result.length-1]){
+                noOfBracket=noOfBracket-1
+            }
+            if(')'==result[result.length-1]){
+                noOfBracket=noOfBracket+1
+            }
             result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '/';
             isDotAllowed=true;
         }
@@ -169,16 +202,22 @@ const onCickDivide = (e) => {
 
 const onCickMod = (e) => {
     result=result_ref.textContent
-    if(result==""){
+    if(result==""  || result[result.length-1]=="."){
 
     }
 
     else{
-        if(!isNaN(result[result.length-1])){
+        if(!operation.includes(result[result.length-1])){
             result_ref.textContent = result_ref.textContent + '%';
             isDotAllowed=true;
         }
         else{
+            if('('==result[result.length-1]){
+                noOfBracket=noOfBracket-1
+            }
+            if(')'==result[result.length-1]){
+                noOfBracket=noOfBracket+1
+            }
             result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '%';
             isDotAllowed=true;
         }
@@ -187,16 +226,22 @@ const onCickMod = (e) => {
 
 const onCickMul = (e) => {
     result=result_ref.textContent
-    if(result==""){
+    if(result==""  || result[result.length-1]=="."){
 
     }
 
     else{
-        if(!isNaN(result[result.length-1])){
+        if(!operation.includes(result[result.length-1])){
             result_ref.textContent = result_ref.textContent + '*';
             isDotAllowed=true;
         }
         else{
+            if('('==result[result.length-1]){
+                noOfBracket=noOfBracket-1
+            }
+            if(')'==result[result.length-1]){
+                noOfBracket=noOfBracket+1
+            }
             result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '*';
             isDotAllowed=true;
         }
@@ -287,8 +332,8 @@ const keyActions = {
         e.preventDefault();
         onClckDivide();
     },
-    '(': () => appendToResult('('),
-    ')': () => appendToResult(')'),
+    '(': () => onClickOpenBracket(),
+    ')': () => onClickCloseBracket(),
     '!': () => appendToResult('!'),
     '%': () => onCickMod(),
     'Backspace': () => deleteLastCharacter(),
