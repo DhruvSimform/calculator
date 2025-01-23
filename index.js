@@ -99,7 +99,11 @@ const onClickEqual = (e) => {
     try {
         let s = result.replaceAll("^", "**")
         let n=eval(s)
-        result_ref.textContent = `${Math.floor(n*10000)/10000}`;
+        if(`${n}`.indexOf('.') !== -1) {
+            n = Number(n).toFixed(2);
+        }
+        result_ref.textContent=n
+ 
     } catch {
         result_ref.textContent = "Error";
     }
