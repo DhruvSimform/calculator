@@ -17,7 +17,7 @@
     <div class="container calculator">
 
         <div class="display">
-            <p class="result">0</p>
+            <p class="result">0+7</p>
 
         </div>
 
@@ -67,7 +67,7 @@
 
             <div class="row container-row">
                 <button class="col-5 upperkey">
-                    Trigonometry
+                    &#9727; Trigonometry
                 </button>
                 <button class="col upperkey">
                     Function
@@ -92,10 +92,10 @@
                 <button class="col secondrykey">
                     e
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey" onclick="onClickEraseAll">
                     C
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey" onclick="onclickEraseOne()">
                     ⌫
                 </button>
 
@@ -126,16 +126,16 @@
                 <button class="col secondrykey">
                     &radic;<span style="text-decoration:overline;">&nbsp;X&nbsp;
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="onClickOpenBracket()">
                     (
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="onClickCloseBracket()">
                     )
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="onClickFactorial()">
                     n!
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     &divide;
                 </button>
 
@@ -143,20 +143,20 @@
 
 
 
-            <div class="row container-row">
-                <button class="col secondrykey">
+            <div class="row container-row"  onclick="">
+                <button class="col secondrykey"  onclick="">
                     x<sup>y</sup>
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickSeven()">
                     7
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickEight()">
                     8
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickNine()">
                     9
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     &times;
                 </button>
 
@@ -164,19 +164,19 @@
 
 
             <div class="row container-row">
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     10<sup>x</sup>
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickFour()">
                     4
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickFive()">
                     5
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickSix()">
                     6
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     &minus;
                 </button>
 
@@ -184,19 +184,19 @@
 
 
             <div class="row container-row">
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     log
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="onClickOne()">
                     1
                     </dbuttoniv>
-                    <button class="col mainkey">
+                    <button class="col mainkey"  onclick="onClickTwo()">
                         2
                     </button>
-                    <button class="col mainkey">
+                    <button class="col mainkey"  onclick="onClickThree()">
                         3
                     </button>
-                    <button class="col secondrykey">
+                    <button class="col secondrykey"  onclick="onClickPlus()">
                         &plus;
                     </button>
 
@@ -204,19 +204,19 @@
 
 
             <div class="row container-row">
-                <button class="col secondrykey">
+                <button class="col secondrykey"  onclick="">
                     ln
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey"  onclick="">
                     <sup>&plus;</sup>/ <sub>&minus;</sub>
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey" onclick="onClickZero()">
                     0
                 </button>
-                <button class="col mainkey">
+                <button class="col mainkey" onclick="">
                     .
                 </button>
-                <button class="col equalkey">
+                <button class="col equalkey" id="equal" onclick="onClickEqual()">
                     =
                 </button>
 
