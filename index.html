@@ -19,7 +19,7 @@
     <div class="container calculator">
 
         <div class="display">
-            <p class="result">0+7</p>
+            <p class="result"></p>
 
         </div>
 
@@ -50,19 +50,19 @@
 
 
             <div class="row container-row">
-                <button class="col upperkey" disabled>
+                <button class="col upperkey mc" disabled onclick="memoryClear(event)">
                     MC
                 </button>
-                <button class="col upperkey" disabled>
+                <button class="col upperkey mr" disabled onclick="memoryRecall(event)">
                     MR
                 </button>
-                <button class="col upperkey">
+                <button class="col upperkey mplus" onclick="memoryAdd(event)">
                     M+
                 </button>
-                <button class="col upperkey">
+                <button class="col upperkey msub" onclick="memorySubtract(event)">
                     M-
                 </button>
-                <button class="col upperkey">
+                <button class="col upperkey mstore" onclick="memoryStore(event)">
                     MS
                 </button>
 

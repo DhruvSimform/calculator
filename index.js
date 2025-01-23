@@ -4,6 +4,11 @@ let result = result_ref.textContent
 
 let memory = 0; // Memory storage for M+, M-, MS
 
+
+const mc_ref = document.querySelector(".mc")
+const mr_ref = document.querySelector(".mr")
+
+
 // console.log(result)
 
 const onClickZero = (e) => {
@@ -227,27 +232,51 @@ document.addEventListener("keydown", function (event) {
 
 
 
-// const memoryAdd = () => {
-//     let current = parseFloat(result_ref.textContent);
-//     if (!isNaN(current)) {
-//         memory += current;
-//     }
-// };
+const memoryAdd = () => {
+    let current = parseFloat(result_ref.textContent);
+    if (!isNaN(current)) {
+        memory += current;
+        enableMemoryBTN()
+        console.log(memory);
+        
+    }
+};
 
-// const memorySubtract = () => {
-//     let current = parseFloat(result_ref.textContent);
-//     if (!isNaN(current)) {
-//         memory -= current;
-//     }
-// };
+const memorySubtract = () => {
+    let current = parseFloat(result_ref.textContent);
+    if (!isNaN(current)) {
+        memory -= current;
+        enableMemoryBTN();
+        console.log(memory);
+        
+    }
+};
 
-// const memoryStore = () => {
-//     let current = parseFloat(result_ref.textContent);
-//     if (!isNaN(current)) {
-//         memory = current;
-//     }
-// };
+const memoryStore = () => {
+    let current = parseFloat(result_ref.textContent);
+    if (!isNaN(current)) {
+        memory = current;
+        enableMemoryBTN()
+        console.log(memory);
+        
+    }
+};
 
-// const memoryRecall = () => {
-//     result_ref.textContent = `${memory}`;
-// };
+const memoryRecall = () => {
+    result_ref.textContent = result_ref.textContent+memory;
+};
+
+const memoryClear = () => {
+    memory=0;
+    mc_ref.disabled=true;
+    mr_ref.disabled=true;
+
+};
+
+
+const enableMemoryBTN = (e)=>{
+    if (memory!=0){
+        mc_ref.disabled=false;
+        mr_ref.disabled=false;
+    }
+}
