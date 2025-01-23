@@ -98,7 +98,8 @@ const onClickEqual = (e) => {
     result = result_ref.textContent;
     try {
         let s = result.replaceAll("^", "**")
-        result_ref.textContent = `${eval(s)}`;
+        let n=eval(s)
+        result_ref.textContent = `${Math.floor(n*10000)/10000}`;
     } catch {
         result_ref.textContent = "Error";
     }
@@ -338,15 +339,7 @@ const keyActions = {
     '%': () => onCickMod(),
     'Backspace': () => deleteLastCharacter(),
     'Delete': () => deleteNextCharacter(),
-    'Enter': () => {
-        result = result_ref.textContent;
-        try {
-            let s = result.replaceAll("^", "**")
-            result_ref.textContent = `${eval(s)}`;
-        } catch {
-            result_ref.textContent = "Error";
-        }
-    },
+    'Enter': () => onClickEqual(),
 };
 
 document.addEventListener("keydown", function (event) {

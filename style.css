@@ -33,7 +33,7 @@
     /* background-color: black;
     color: white; */
     box-sizing: border-box;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     display: flex;
     align-items: center;
