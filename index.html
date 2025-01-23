@@ -96,7 +96,7 @@
                 <button class="col secondrykey">
                     e
                 </button>
-                <button class="col secondrykey" onclick="onClickEraseAll">
+                <button class="col secondrykey" onclick="onClickEraseAll()">
                     C
                 </button>
                 <button class="col secondrykey" onclick="onclickEraseOne()">
@@ -107,10 +107,10 @@
 
 
             <div class="row container-row">
-                <button class="col secondrykey">
+                <button class="col secondrykey" onclick="calculateSquare()">
                     X<sup>2</sup>
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey" onclick="calculateReciprocal()">
                     <sup>1</sup>/<sub>X</sub>
                 </button>
                 <button class="col secondrykey">
@@ -119,7 +119,7 @@
                 <button class="col secondrykey">
                     exp
                 </button>
-                <button class="col secondrykey">
+                <button class="col secondrykey" onclick="onCickMod()">
                     mod
                 </button>
 
@@ -139,7 +139,7 @@
                 <button class="col secondrykey"  onclick="onClickFactorial()">
                     n!
                 </button>
-                <button class="col secondrykey"  onclick="">
+                <button class="col secondrykey"  onclick="onCickDivide()">
                     &divide;
                 </button>
 
@@ -160,7 +160,7 @@
                 <button class="col mainkey"  onclick="onClickNine()">
                     9
                 </button>
-                <button class="col secondrykey"  onclick="">
+                <button class="col secondrykey"  onclick="onCickMul()">
                     &times;
                 </button>
 
@@ -180,7 +180,7 @@
                 <button class="col mainkey"  onclick="onClickSix()">
                     6
                 </button>
-                <button class="col secondrykey"  onclick="">
+                <button class="col secondrykey"  onclick="onCickMinus()">
                     &minus;
                 </button>
 
@@ -217,7 +217,7 @@
                 <button class="col mainkey" onclick="onClickZero()">
                     0
                 </button>
-                <button class="col mainkey" onclick="">
+                <button class="col mainkey" onclick="onClickDot()">
                     .
                 </button>
                 <button class="col equalkey" id="equal" onclick="onClickEqual()">
