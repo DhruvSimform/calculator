@@ -21,7 +21,6 @@ let noOfBracket = 0
 const operation = ['+', '-', '*', '/', '%', '(']
 
 
-
 // console.log(result)
 
 const onClickZero = (e) => {
