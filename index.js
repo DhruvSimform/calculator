@@ -111,12 +111,18 @@ const onClickEqual = (e) => {
 
 
 const onclickEraseOne = (e) => {
-
+    result=result_ref.textContent
     if(result[result.length-1]=="("){
         noOfBracket=noOfBracket-1
     }
     if(result[result.length-1]==")"){
         noOfBracket=noOfBracket+1
+    }
+
+    console.log(result.at(-1));
+    if(result.at(-1) == "."){
+        
+        isDotAllowed=true;
     }
     result_ref.textContent = result_ref.textContent.slice(0, -1)
 
@@ -124,7 +130,8 @@ const onclickEraseOne = (e) => {
 
 const onClickEraseAll = (e) => {
     result_ref.textContent = "";
-    noOfBracket=0
+    noOfBracket=0;
+    isDotAllowed=true;
 }
 
 
@@ -294,21 +301,8 @@ const calculateReciprocal = () => {
 
     let current = result_ref.textContent;
 
-    // let lastOperatorIndex = -1;
-
-    // for (let i=current.length -1 ; i>=0;i--){
-    //     if (operators.includes(current[i])) {
-    //         lastOperatorIndex = i;
-    //         break;
-    //     }
-    // }
-
-    // let reciprocal = current.slice(lastOperatorIndex +1);
-    // let reciprocalValue = `(${reciprocal}/`;
     result_ref.textContent = current+"(1/";
-
-
-
+    noOfBracket=noOfBracket+1
 }
 
 
