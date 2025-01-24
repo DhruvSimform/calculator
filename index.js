@@ -1,18 +1,24 @@
-
+// refrence of result display to make changes on it
 const result_ref = document.querySelector(".result")
 let result = result_ref.textContent
 
 let memory = 0; // Memory storage for M+, M-, MS
 
-
+//refrence of mc and mr button for to change the value of disable attribute
 const mc_ref = document.querySelector(".mc")
 const mr_ref = document.querySelector(".mr")
 
+
+//variable for to stop allwing dot after use in single flot number
 let isDotAllowed = true;
 
-let noOfBracket=0
 
-const operation = ['+', '-', '*', '/', '%','(']
+//variable for to count open bracket so wee can only allow that much no of closing bracket
+let noOfBracket = 0
+
+
+//array of variable 
+const operation = ['+', '-', '*', '/', '%', '(']
 
 
 
@@ -69,22 +75,22 @@ const onClickNine = (e) => {
 
 const onClickOpenBracket = (e) => {
     result_ref.textContent = result_ref.textContent + '(';
-    noOfBracket=noOfBracket+1
+    noOfBracket = noOfBracket + 1
 }
 
 const onClickCloseBracket = (e) => {
-    if(noOfBracket){
+    if (noOfBracket) {
         result_ref.textContent = result_ref.textContent + ')';
-        noOfBracket=noOfBracket-1
+        noOfBracket = noOfBracket - 1
 
     }
 }
 
 const onClickDot = (e) => {
-    
-    if(isDotAllowed){
+
+    if (isDotAllowed) {
         result_ref.textContent = result_ref.textContent + '.';
-        isDotAllowed=false;
+        isDotAllowed = false;
     }
 }
 
@@ -98,16 +104,19 @@ const onClickEqual = (e) => {
     result = result_ref.textContent;
     try {
         let s = result.replaceAll("^", "**")
-        let n=eval(s)
-        if(`${n}`.indexOf('.') !== -1) {
+        let n = eval(s)
+        if (`${n}`.indexOf('.') !== -1) {
             n = Number(n).toFixed(2);
-            isDotAllowed=false;
-        
-        }
-      
-        result_ref.textContent=n
+            isDotAllowed = false;
 
- 
+        }
+        else {
+            isDotAllowed = true
+        }
+
+        result_ref.textContent = n
+
+
     } catch {
         result_ref.textContent = "Error";
     }
@@ -115,18 +124,18 @@ const onClickEqual = (e) => {
 
 
 const onclickEraseOne = (e) => {
-    result=result_ref.textContent
-    if(result[result.length-1]=="("){
-        noOfBracket=noOfBracket-1
+    result = result_ref.textContent
+    if (result[result.length - 1] == "(") {
+        noOfBracket = noOfBracket - 1
     }
-    if(result[result.length-1]==")"){
-        noOfBracket=noOfBracket+1
+    if (result[result.length - 1] == ")") {
+        noOfBracket = noOfBracket + 1
     }
 
     console.log(result.at(-1));
-    if(result.at(-1) == "."){
-        
-        isDotAllowed=true;
+    if (result.at(-1) == ".") {
+
+        isDotAllowed = true;
     }
     result_ref.textContent = result_ref.textContent.slice(0, -1)
 
@@ -134,143 +143,59 @@ const onclickEraseOne = (e) => {
 
 const onClickEraseAll = (e) => {
     result_ref.textContent = "";
-    noOfBracket=0;
-    isDotAllowed=true;
+    noOfBracket = 0;
+    isDotAllowed = true;
 }
 
+
+const supportFunctionForOperation = (ope) => {
+    result = result_ref.textContent
+
+    if (result == "" || result[result.length - 1] == ".") {
+    }
+
+    else {
+        if (!operation.includes(result[result.length - 1])) {
+            result_ref.textContent = result_ref.textContent + `${ope}`;
+            isDotAllowed = true;
+        }
+        else {
+            if ('(' == result[result.length - 1]) {
+                noOfBracket = noOfBracket - 1
+            }
+            if (')' == result[result.length - 1]) {
+                noOfBracket = noOfBracket + 1
+            }
+            result_ref.textContent = result_ref.textContent.slice(0, result.length - 1) + `${ope}`
+            isDotAllowed = true;
+
+
+        }
+    }
+
+}
 
 const onClickPlus = (e) => {
 
-
-
-    // const result_ref = document.querySelector(".result")
-    result=result_ref.textContent
-    // console.log(result[result.length-1]);
-    
-    if(result=="" || result[result.length-1]=="."){
-
-    }
-
-
-    else{
-        if(!operation.includes(result[result.length-1])){
-            result_ref.textContent = result_ref.textContent + '+';
-            isDotAllowed=true;
-        }
-        else{
-            if('('==result[result.length-1]){
-                noOfBracket=noOfBracket-1
-            }
-            if(')'==result[result.length-1]){
-                noOfBracket=noOfBracket+1
-            }
-            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '+';
-            isDotAllowed=true;
-
-           
-        }
-    }
-
-
+    supportFunctionForOperation("+")
 }
 
-const onCickMinus = (e) => {
-    result=result_ref.textContent
-    if(result==""  || result[result.length-1]=="."){
-
-    }
-
-    else{
-        if(!operation.includes(result[result.length-1])){
-            result_ref.textContent = result_ref.textContent + '-';
-            isDotAllowed=true;
-        }
-        else{
-            if('('==result[result.length-1]){
-                noOfBracket=noOfBracket-1
-            }
-            if(')'==result[result.length-1]){
-                noOfBracket=noOfBracket+1
-            }
-            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '-';
-            isDotAllowed=true;
-        }
-    }
+const onClickMinus = (e) => {
+    supportFunctionForOperation("-")
 }
 
-const onCickDivide = (e) => {
-    // preventDefault();
-    result=result_ref.textContent
-    if(result==""  || result[result.length-1]=="."){
-
-    }
-
-    else{
-        if(!operation.includes(result[result.length-1])){
-            result_ref.textContent = result_ref.textContent + '/';
-            isDotAllowed=true;
-        }
-
-        else{
-            if('('==result[result.length-1]){
-                noOfBracket=noOfBracket-1
-            }
-            if(')'==result[result.length-1]){
-                noOfBracket=noOfBracket+1
-            }
-            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '/';
-            isDotAllowed=true;
-        }
-    }
+const onClickDivide = (e) => {
+    e.preventDefault();
+    supportFunctionForOperation("/")
 }
 
 
-const onCickMod = (e) => {
-    result=result_ref.textContent
-    if(result==""  || result[result.length-1]=="."){
-
-    }
-
-    else{
-        if(!operation.includes(result[result.length-1])){
-            result_ref.textContent = result_ref.textContent + '%';
-            isDotAllowed=true;
-        }
-        else{
-            if('('==result[result.length-1]){
-                noOfBracket=noOfBracket-1
-            }
-            if(')'==result[result.length-1]){
-                noOfBracket=noOfBracket+1
-            }
-            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '%';
-            isDotAllowed=true;
-        }
-    }
+const onClickMod = (e) => {
+    supportFunctionForOperation("%")
 }
 
-const onCickMul = (e) => {
-    result=result_ref.textContent
-    if(result==""  || result[result.length-1]=="."){
-
-    }
-
-    else{
-        if(!operation.includes(result[result.length-1])){
-            result_ref.textContent = result_ref.textContent + '*';
-            isDotAllowed=true;
-        }
-        else{
-            if('('==result[result.length-1]){
-                noOfBracket=noOfBracket-1
-            }
-            if(')'==result[result.length-1]){
-                noOfBracket=noOfBracket+1
-            }
-            result_ref.textContent = result_ref.textContent.slice(0,result.length-1) + '*';
-            isDotAllowed=true;
-        }
-    }
+const onClickMul = (e) => {
+    supportFunctionForOperation("*")
 }
 
 const calculateSquare = () => {
@@ -301,12 +226,10 @@ const calculateSquare = () => {
 
 const calculateReciprocal = () => {
 
-    const operators = ['+', '-', '*', '/', '%', '('];
-
     let current = result_ref.textContent;
 
-    result_ref.textContent = current+"(1/";
-    noOfBracket=noOfBracket+1
+    result_ref.textContent = current + "(1/";
+    noOfBracket = noOfBracket + 1
 }
 
 
@@ -332,24 +255,22 @@ const keyActions = {
     '2': () => onClickTwo(),
     '3': () => onClickThree(),
     '4': () => onClickFour(),
-    '5': () =>  onClickFive(),
-    '6': () =>  onClickSix(),
-    '7': () =>  onClickSeven(),
-    '8': () =>  onClickEight(),
-    '9': () =>  onClickNine(),
+    '5': () => onClickFive(),
+    '6': () => onClickSix(),
+    '7': () => onClickSeven(),
+    '8': () => onClickEight(),
+    '9': () => onClickNine(),
     '+': () => onClickPlus(),
-    '-': () => onCickMinus(),
-    '*': () => onCickMul(),
-    '/': (e) => {
-        e.preventDefault();
-        onClckDivide();
-    },
+    '-': () => onClickMinus(),
+    '*': () => onClickMul(),
+    '/': (e) =>onClickDivide(e),
     '(': () => onClickOpenBracket(),
     ')': () => onClickCloseBracket(),
-    '!': () => appendToResult('!'),
-    '%': () => onCickMod(),
+    '!': () => onClickFactorial(),
+    '%': () => onClickMod(),
+    '.':() =>onClickDot(),
     'Backspace': () => deleteLastCharacter(),
-    'Delete': () => deleteNextCharacter(),
+    'Delete': () => deleteLastCharacter(),
     'Enter': () => onClickEqual(),
 };
 
@@ -370,7 +291,7 @@ const memoryAdd = () => {
         memory += current;
         enableMemoryBTN()
         console.log(memory);
-        
+
     }
 };
 
@@ -380,7 +301,7 @@ const memorySubtract = () => {
         memory -= current;
         enableMemoryBTN();
         console.log(memory);
-        
+
     }
 };
 
@@ -390,25 +311,31 @@ const memoryStore = () => {
         memory = current;
         enableMemoryBTN()
         console.log(memory);
-        
+
     }
 };
 
 const memoryRecall = () => {
-    result_ref.textContent = result_ref.textContent+memory;
+    result_ref.textContent = result_ref.textContent + memory;
+    if(result_ref.textContent.includes(".")){
+        isDotAllowed=false
+    }
+    else{
+        isDotAllowed=true
+    }
 };
 
 const memoryClear = () => {
-    memory=0;
-    mc_ref.disabled=true;
-    mr_ref.disabled=true;
+    memory = 0;
+    mc_ref.disabled = true;
+    mr_ref.disabled = true;
 
 };
 
 
-const enableMemoryBTN = (e)=>{
-    if (memory!=0){
-        mc_ref.disabled=false;
-        mr_ref.disabled=false;
+const enableMemoryBTN = (e) => {
+    if (memory != 0) {
+        mc_ref.disabled = false;
+        mr_ref.disabled = false;
     }
 }
