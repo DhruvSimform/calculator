@@ -101,8 +101,12 @@ const onClickEqual = (e) => {
         let n=eval(s)
         if(`${n}`.indexOf('.') !== -1) {
             n = Number(n).toFixed(2);
+            isDotAllowed=false;
+        
         }
+      
         result_ref.textContent=n
+
  
     } catch {
         result_ref.textContent = "Error";
