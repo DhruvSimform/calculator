@@ -1,6 +1,6 @@
 # Scientific Calculator
 
-This is a **Scientific Calculator** built using **HTML**, **CSS**, and **JavaScript**. It features basic arithmetic operations, memory functions, scientific operations like square, reciprocal, and factorial, as well as trigonometric, logarithmic, and exponential operations. The app also supports keyboard inputs and offers a responsive design using the **Bootstrap grid system** for layout.
+This is a **Scientific Calculator** built using **HTML**, **CSS**, and **JavaScript**. It features basic arithmetic operations, memory functions, scientific operations like square, reciprocal. The app also supports keyboard inputs and offers a responsive design using the **Bootstrap grid system** for layout.
 
 ## Calculator Screenshot
 ![Calculator Screenshot](assets/screenshot.png)
