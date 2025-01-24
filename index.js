@@ -1,6 +1,6 @@
 // refrence of result display to make changes on it
 const result_ref = document.querySelector(".result")
-let result = result_ref.textContent
+let result = result_ref.value
 
 let memory = 0; // Memory storage for M+, M-, MS
 
@@ -25,62 +25,62 @@ const operation = ['+', '-', '*', '/', '%', '(']
 // console.log(result)
 
 const onClickZero = (e) => {
-    result_ref.textContent = result_ref.textContent + '0'
+    result_ref.value = result_ref.value + '0'
 }
 
 
 const onClickOne = (e) => {
-    result_ref.textContent = result_ref.textContent + '1'
+    result_ref.value = result_ref.value + '1'
 }
 
 
 const onClickTwo = (e) => {
-    result_ref.textContent = result_ref.textContent + '2'
+    result_ref.value = result_ref.value + '2'
 }
 
 
 const onClickThree = (e) => {
-    result_ref.textContent = result_ref.textContent + '3'
+    result_ref.value = result_ref.value + '3'
 }
 
 
 const onClickFour = (e) => {
-    result_ref.textContent = result_ref.textContent + '4'
+    result_ref.value = result_ref.value + '4'
 }
 
 
 const onClickFive = (e) => {
-    result_ref.textContent = result_ref.textContent + '5'
+    result_ref.value = result_ref.value + '5'
 }
 
 
 const onClickSix = (e) => {
-    result_ref.textContent = result_ref.textContent + '6'
+    result_ref.value = result_ref.value + '6'
 }
 
 
 const onClickSeven = (e) => {
-    result_ref.textContent = result_ref.textContent + '7'
+    result_ref.value = result_ref.value + '7'
 }
 
 
 const onClickEight = (e) => {
-    result_ref.textContent = result_ref.textContent + '8'
+    result_ref.value = result_ref.value + '8'
 }
 
 
 const onClickNine = (e) => {
-    result_ref.textContent = result_ref.textContent + '9'
+    result_ref.value = result_ref.value + '9'
 }
 
 const onClickOpenBracket = (e) => {
-    result_ref.textContent = result_ref.textContent + '(';
+    result_ref.value = result_ref.value + '(';
     noOfBracket = noOfBracket + 1
 }
 
 const onClickCloseBracket = (e) => {
     if (noOfBracket) {
-        result_ref.textContent = result_ref.textContent + ')';
+        result_ref.value = result_ref.value + ')';
         noOfBracket = noOfBracket - 1
 
     }
@@ -89,19 +89,19 @@ const onClickCloseBracket = (e) => {
 const onClickDot = (e) => {
 
     if (isDotAllowed) {
-        result_ref.textContent = result_ref.textContent + '.';
+        result_ref.value = result_ref.value + '.';
         isDotAllowed = false;
     }
 }
 
 
 const onClickFactorial = (e) => {
-    result_ref.textContent = result_ref.textContent + '!'
+    result_ref.value = result_ref.value + '!'
 }
 
 
 const onClickEqual = (e) => {
-    result = result_ref.textContent;
+    result = result_ref.value;
     try {
         let s = result.replaceAll("^", "**")
         let n = eval(s)
@@ -114,17 +114,17 @@ const onClickEqual = (e) => {
             isDotAllowed = true
         }
 
-        result_ref.textContent = n
+        result_ref.value = n
 
 
     } catch {
-        result_ref.textContent = "Error";
+        result_ref.value = "Error";
     }
 }
 
 
 const onclickEraseOne = (e) => {
-    result = result_ref.textContent
+    result = result_ref.value
     if (result[result.length - 1] == "(") {
         noOfBracket = noOfBracket - 1
     }
@@ -137,26 +137,26 @@ const onclickEraseOne = (e) => {
 
         isDotAllowed = true;
     }
-    result_ref.textContent = result_ref.textContent.slice(0, -1)
+    result_ref.value = result_ref.value.slice(0, -1)
 
 }
 
 const onClickEraseAll = (e) => {
-    result_ref.textContent = "";
+    result_ref.value = "";
     noOfBracket = 0;
     isDotAllowed = true;
 }
 
 
 const supportFunctionForOperation = (ope) => {
-    result = result_ref.textContent
+    result = result_ref.value
 
     if (result == "" || result[result.length - 1] == ".") {
     }
 
     else {
         if (!operation.includes(result[result.length - 1])) {
-            result_ref.textContent = result_ref.textContent + `${ope}`;
+            result_ref.value = result_ref.value + `${ope}`;
             isDotAllowed = true;
         }
         else {
@@ -166,7 +166,7 @@ const supportFunctionForOperation = (ope) => {
             if (')' == result[result.length - 1]) {
                 noOfBracket = noOfBracket + 1
             }
-            result_ref.textContent = result_ref.textContent.slice(0, result.length - 1) + `${ope}`
+            result_ref.value = result_ref.value.slice(0, result.length - 1) + `${ope}`
             isDotAllowed = true;
 
 
@@ -200,11 +200,11 @@ const onClickMul = (e) => {
 
 const calculateSquare = () => {
     const operators = ['+', '-', '*', '/', '%', '('];
-    let current = result_ref.textContent;
+    let current = result_ref.value;
 
     // Check if the last character is ")"
     if (current[current.length - 1] === ")") {
-        result_ref.textContent = result_ref.textContent + `^2`
+        result_ref.value = result_ref.value + `^2`
     } else {
         // Find the last operator index
         let lastOperatorIndex = -1;
@@ -219,16 +219,16 @@ const calculateSquare = () => {
         let toSquare = current.slice(lastOperatorIndex + 1);
         if (!isNaN(toSquare) && toSquare !== "") {
             let squaredValue = `(${toSquare}^2)`;
-            result_ref.textContent = current.slice(0, lastOperatorIndex + 1) + squaredValue;
+            result_ref.value = current.slice(0, lastOperatorIndex + 1) + squaredValue;
         }
     }
 };
 
 const calculateReciprocal = () => {
 
-    let current = result_ref.textContent;
+    let current = result_ref.value;
 
-    result_ref.textContent = current + "(1/";
+    result_ref.value = current + "(1/";
     noOfBracket = noOfBracket + 1
 }
 
@@ -238,15 +238,15 @@ const calculateReciprocal = () => {
 
 // Attach a keydown event listener to the document
 const appendToResult = (symbol) => {
-    result_ref.textContent += symbol;
+    result_ref.value += symbol;
 };
 
 const deleteLastCharacter = () => {
-    result_ref.textContent = result_ref.textContent.slice(0, -1);
+    result_ref.value = result_ref.value.slice(0, -1);
 };
 
 const deleteCurrentCharacter = () => {
-    result_ref.textContent = result_ref.textContent.slice(1);
+    result_ref.value = result_ref.value.slice(1);
 };
 
 const keyActions = {
@@ -286,7 +286,7 @@ document.addEventListener("keydown", function (event) {
 
 
 const memoryAdd = () => {
-    let current = parseFloat(result_ref.textContent);
+    let current = parseFloat(result_ref.value);
     if (!isNaN(current)) {
         memory += current;
         enableMemoryBTN()
@@ -296,7 +296,7 @@ const memoryAdd = () => {
 };
 
 const memorySubtract = () => {
-    let current = parseFloat(result_ref.textContent);
+    let current = parseFloat(result_ref.value);
     if (!isNaN(current)) {
         memory -= current;
         enableMemoryBTN();
@@ -306,7 +306,7 @@ const memorySubtract = () => {
 };
 
 const memoryStore = () => {
-    let current = parseFloat(result_ref.textContent);
+    let current = parseFloat(result_ref.value);
     if (!isNaN(current)) {
         memory = current;
         enableMemoryBTN()
@@ -316,8 +316,8 @@ const memoryStore = () => {
 };
 
 const memoryRecall = () => {
-    result_ref.textContent = result_ref.textContent + memory;
-    if(result_ref.textContent.includes(".")){
+    result_ref.value = result_ref.value + memory;
+    if(result_ref.value.includes(".")){
         isDotAllowed=false
     }
     else{
