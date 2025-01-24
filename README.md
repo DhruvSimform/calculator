@@ -1,6 +1,18 @@
-# Perform Operations
+# Scientific Calculator
 
-Access the live calculator [here](https://dhruvsimform.github.io/calculator/).
+This is a **Scientific Calculator** built using **HTML**, **CSS**, and **JavaScript**. It features basic arithmetic operations, memory functions, scientific operations like square, reciprocal, and factorial, as well as trigonometric, logarithmic, and exponential operations. The app also supports keyboard inputs and offers a responsive design using the **Bootstrap grid system** for layout.
+
+## Calculator Screenshot
+![Calculator Screenshot](assets/screenshot.png)
+
+## Features
+
+- **Basic Operations**: Addition, Subtraction, Multiplication, Division
+- **Advanced Functions**: Square, Reciprocal, Modulo
+- **Memory Functions**: Store, Add, Subtract, Recall, Clear
+- **Keyboard Support**: Fully supports keyboard events for quick calculations
+- **Responsive Design**: Adaptable to different screen sizes using Bootstrap's grid system
+- **Result Display**: Shows calculations and results in real-time
 
 ## Supported Operations
 
@@ -32,3 +44,4 @@ Access the live calculator [here](https://dhruvsimform.github.io/calculator/).
 - Results for floating-point operations will display up to **two decimal places** for clarity.
 - **MC** and **MR** are only enabled when the memory value is not zero.
 - Ensure all inputs are valid numbers.
+
