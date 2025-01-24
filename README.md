@@ -2,6 +2,11 @@
 
 This is a **Scientific Calculator** built using **HTML**, **CSS**, and **JavaScript**. It features basic arithmetic operations, memory functions, scientific operations like square, reciprocal. The app also supports keyboard inputs and offers a responsive design using the **Bootstrap grid system** for layout.
 
+## Live Demo
+
+You can try the live version of the calculator here:  
+[**Live Scientific Calculator**](https://dhruvsimform.github.io/calculator/)
+
 ## Calculator Screenshot
 ![Calculator Screenshot](assets/screenshot.png)
 
