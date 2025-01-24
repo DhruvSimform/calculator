@@ -8,7 +8,7 @@ You can try the live version of the calculator here:
 [**Live Scientific Calculator**](https://dhruvsimform.github.io/calculator/)
 
 ## Calculator Screenshot
-![Calculator Screenshot](assets/screenshot.png)
+<img src="assets/screenshot.png" alt="Calculator Screenshot" width="300" height="400">
 
 ## Features
 
