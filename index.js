@@ -131,7 +131,7 @@ const onclickEraseOne = (e) => {
         noOfBracket = noOfBracket + 1
     }
 
-    console.log(result.at(-1));
+    // console.log(result.at(-1));
     if (result.at(-1) == ".") {
 
         isDotAllowed = true;
@@ -278,7 +278,7 @@ document.addEventListener("keydown", function (event) {
     if (action) {
         action(event);
     } else {
-        console.log("Other key pressed: " + event.key);
+        // console.log("Other key pressed: " + event.key);
     }
 });
 
@@ -289,7 +289,7 @@ const memoryAdd = () => {
     if (!isNaN(current)) {
         memory += current;
         enableMemoryBTN()
-        console.log(memory);
+        // console.log(memory);
 
     }
 };
@@ -299,7 +299,7 @@ const memorySubtract = () => {
     if (!isNaN(current)) {
         memory -= current;
         enableMemoryBTN();
-        console.log(memory);
+        // console.log(memory);
 
     }
 };
@@ -309,7 +309,7 @@ const memoryStore = () => {
     if (!isNaN(current)) {
         memory = current;
         enableMemoryBTN()
-        console.log(memory);
+        // console.log(memory);
 
     }
 };
