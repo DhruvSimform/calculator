@@ -94,9 +94,9 @@ const onClickDot = (e) => {
 }
 
 
-const onClickFactorial = (e) => {
-    result_ref.textContent = result_ref.textContent + '!'
-}
+// const onClickFactorial = (e) => {
+//     result_ref.textContent = result_ref.textContent + '!'
+// }
 
 
 const onClickEqual = (e) => {
@@ -265,7 +265,7 @@ const keyActions = {
     '/': (e) =>onClickDivide(e),
     '(': () => onClickOpenBracket(),
     ')': () => onClickCloseBracket(),
-    '!': () => onClickFactorial(),
+    // '!': () => onClickFactorial(),
     '%': () => onClickMod(),
     '.':() =>onClickDot(),
     'Backspace': () => deleteLastCharacter(),
